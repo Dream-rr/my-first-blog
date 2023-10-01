@@ -1,12 +1,28 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
+<div class="container text-center">
+    <div class="row align-item-start">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-4">
+            {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fa-solid fa-pen-to-square"></i></a>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
             </div>
-        {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<div class="post">
     <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
